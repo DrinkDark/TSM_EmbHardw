@@ -52,14 +52,30 @@ short sobel_mac( unsigned char *pixels,
                  int y,
                  const char *filter,
                  unsigned int width ) {
-   short dy,dx;
    short result = 0;
-   for (dy = -1 ; dy < 2 ; dy++) {
-      for (dx = -1 ; dx < 2 ; dx++) {
-         result += filter[(dy+1)*3+(dx+1)]*
-                   pixels[(y+dy)*width+(x+dx)];
-      }
-   }
+
+   //dy = -1
+   result += filter[0]*
+             pixels[(y-1)*width+(x-1)];
+   result += filter[1]*
+             pixels[(y-1)*width+x];
+   result += filter[2]*
+             pixels[(y-1)*width+(x+1)];
+   //dy = 0
+   result += filter[3]*
+             pixels[y*width+(x-1)];
+   result += filter[4]*
+             pixels[y*width+x];
+   result += filter[5]*
+             pixels[y*width+(x+1)];
+   //dy = 1
+   result += filter[6]*
+             pixels[(y+1)*width+(x-1)];
+   result += filter[7]*
+             pixels[(y+1)*width+x];
+   result += filter[8]*
+             pixels[(y+1)*width+(x+1)];
+
    return result;
 }
 
