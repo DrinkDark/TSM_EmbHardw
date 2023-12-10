@@ -9,6 +9,8 @@
 #include "vga.h"
 #include "dipswitch.h"
 #include "sobel.h"
+#include "sys/alt_timestamp.h"
+#include "alt_types.h"
 
 int main()
 {
@@ -17,9 +19,22 @@ int main()
   unsigned char *grayscale;
   unsigned char current_mode;
   unsigned char mode;
+
+  //ProfileTimer timestamp variable
+  alt_u32 start_grayscale;
+  alt_u32 stop_grayscale;
+  alt_u32 start_sobel_x;
+  alt_u32 stop_sobel_x;
+  alt_u32 start_sobel_y;
+  alt_u32 stop_sobel_y;
+  alt_u32 start_sobel_threshold;
+  alt_u32 stop_sobel_threshold;
+
   init_LCD();
   init_camera();
   vga_set_swap(VGA_QuarterScreen|VGA_Grayscale);
+  alt_timestamp_start();
+
   printf("Hello from Nios II!\n");
   cam_get_profiling();
   buffer1 = (void *) malloc(cam_get_xsize()*cam_get_ysize());
@@ -88,13 +103,29 @@ int main()
 		      	  		  vga_set_pointer(image);
 		      	  	   }
 		      	  	   break;
-		      default: conv_grayscale((void *)image,
+		      default: start_grayscale = alt_timestamp();
+		    	  	   conv_grayscale((void *)image,
 	                                  cam_get_xsize()>>1,
 	                                  cam_get_ysize());
                        grayscale = get_grayscale_picture();
+		    	  	   stop_grayscale = alt_timestamp();
+		    	  	   printf("Grayscale : %d cycles/pixel\n", ((stop_grayscale - start_grayscale) / 196608));
+
+		    	  	   start_sobel_x = alt_timestamp();
                        sobel_x(grayscale);
-                       sobel_y(grayscale);
-                       sobel_threshold(128);
+                       stop_sobel_x = alt_timestamp();
+                       printf("Sobel x : %d cycles/pixel \n", ((stop_sobel_x - start_sobel_x) / 196608));
+
+                       start_sobel_y = alt_timestamp();
+					   sobel_y(grayscale);
+					   stop_sobel_y = alt_timestamp();
+					   printf("Sobel y : %d cycles/pixel \n", ((stop_sobel_y - start_sobel_y) / 196608));
+
+					   start_sobel_threshold = alt_timestamp();
+					   sobel_threshold(128);
+					   stop_sobel_threshold = alt_timestamp();
+					   printf("Sobel threshold : %d cycles/pixel \n", ((stop_sobel_threshold - start_sobel_threshold) / 196608));
+
                        grayscale=GetSobelResult();
 		               transfer_LCD_with_dma(&grayscale[16520],
 		      		                	cam_get_xsize()>>1,
@@ -103,6 +134,8 @@ int main()
 		      	  		  vga_set_swap(VGA_QuarterScreen|VGA_Grayscale);
 		      	  		  vga_set_pointer(grayscale);
 		      	  	   }
+
+		      	  	   printf("Total : %d cycles/pixel\n\n", ((stop_grayscale - start_grayscale)+(stop_sobel_x - start_sobel_x)+(stop_sobel_y - start_sobel_y)+(stop_sobel_threshold - start_sobel_threshold)) / 196608);
 		      	  	   break;
 		      }
 		  }
