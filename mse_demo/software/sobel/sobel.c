@@ -79,15 +79,30 @@ short sobel_mac( unsigned char *pixels,
    return result;
 }
 
-void sobel_x( unsigned char *source ) {
-   int x,y;
 
-   for (y = 1 ; y < (sobel_height-1) ; y++) {
-      for (x = 1 ; x < (sobel_width-1) ; x++) {
-         sobel_x_result[y*sobel_width+x] = sobel_mac(source,x,y,gx_array,sobel_width);
+void sobel_x(unsigned char *source) {
+   int x, y;
+
+   for (y = 1; y < (sobel_height - 1); y++) {
+      for (x = 1; x < (sobel_width - 1); x++) {
+         unsigned char *currentRow = source + y * sobel_width;
+         short *outputPixel = sobel_x_result + y * sobel_width + x;
+
+         *outputPixel =
+            currentRow[x - 1 - sobel_width] * gx_array[0][0] +
+            currentRow[x - sobel_width] * gx_array[0][1] +
+            currentRow[x + 1 - sobel_width] * gx_array[0][2] +
+            currentRow[x - 1] * gx_array[1][0] +
+            currentRow[x] * gx_array[1][1] +
+            currentRow[x + 1] * gx_array[1][2] +
+            currentRow[x - 1 + sobel_width] * gx_array[2][0] +
+            currentRow[x + sobel_width] * gx_array[2][1] +
+            currentRow[x + 1 + sobel_width] * gx_array[2][2];
       }
    }
 }
+
+
 
 void sobel_x_with_rgb( unsigned char *source ) {
    int x,y;
@@ -106,15 +121,29 @@ void sobel_x_with_rgb( unsigned char *source ) {
    }
 }
 
-void sobel_y( unsigned char *source ) {
-   int x,y;
+void sobel_y(unsigned char *source) {
+   int x, y;
 
-   for (y = 1 ; y < (sobel_height-1) ; y++) {
-      for (x = 1 ; x < (sobel_width-1) ; x++) {
-         sobel_y_result[y*sobel_width+x] = sobel_mac(source,x,y,gy_array,sobel_width);
+   for (y = 1; y < (sobel_height - 1); y++) {
+      for (x = 1; x < (sobel_width - 1); x++) {
+         unsigned char *currentRow = source + y * sobel_width;
+         short *outputPixel = sobel_y_result + y * sobel_width + x;
+
+         *outputPixel =
+            currentRow[x - 1 - sobel_width] * gy_array[0][0] +
+            currentRow[x - sobel_width] * gy_array[0][1] +
+            currentRow[x + 1 - sobel_width] * gy_array[0][2] +
+            currentRow[x - 1] * gy_array[1][0] +
+            currentRow[x] * gy_array[1][1] +
+            currentRow[x + 1] * gy_array[1][2] +
+            currentRow[x - 1 + sobel_width] * gy_array[2][0] +
+            currentRow[x + sobel_width] * gy_array[2][1] +
+            currentRow[x + 1 + sobel_width] * gy_array[2][2];
       }
    }
 }
+
+
 
 void sobel_y_with_rgb( unsigned char *source ) {
    int x,y;
