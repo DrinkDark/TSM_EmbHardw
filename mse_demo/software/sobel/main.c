@@ -111,7 +111,7 @@ int main()
 		    	  	   stop_grayscale = alt_timestamp();
 		    	  	   printf("Grayscale : %d cycles/pixel\n", ((stop_grayscale - start_grayscale) / 196608));
 
-		    	  	   start_sobel_x = alt_timestamp();
+		    	  	   /*start_sobel_x = alt_timestamp();
                        sobel_x(grayscale);
                        stop_sobel_x = alt_timestamp();
                        printf("Sobel x : %d cycles/pixel \n", ((stop_sobel_x - start_sobel_x) / 196608));
@@ -125,6 +125,12 @@ int main()
 					   sobel_threshold(128);
 					   stop_sobel_threshold = alt_timestamp();
 					   printf("Sobel threshold : %d cycles/pixel \n", ((stop_sobel_threshold - start_sobel_threshold) / 196608));
+					   */
+
+		    	  	   start_sobel_x = alt_timestamp();
+		    	  	   sobel(grayscale, 128);
+		    	  	   stop_sobel_x = alt_timestamp();
+		    	  	   printf("Sobel complete: %d cycles/pixel \n", ((stop_sobel_x - start_sobel_x) / 196608));
 
                        grayscale=GetSobelResult();
 		               transfer_LCD_with_dma(&grayscale[16520],
