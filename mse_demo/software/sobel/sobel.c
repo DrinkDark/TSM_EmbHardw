@@ -212,7 +212,6 @@ void sobel(unsigned char *source, short threshold) {
    }
 }
 
-
 unsigned short *GetSobel_rgb() {
 	return sobel_rgb565;
 }
