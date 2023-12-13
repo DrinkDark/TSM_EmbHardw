@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'base_system'
  * SOPC Builder design path: C:/Users/adrie/OneDrive/Documents/HES/Master/TSM_EmbHardw/Labo/mse_demo/quartus_project/base_system.sopcinfo
  *
- * Generated: Tue Dec 12 08:53:46 CET 2023
+ * Generated: Wed Dec 13 15:18:11 CET 2023
  */
 
 /*
@@ -137,6 +137,15 @@
 
 
 /*
+ * Custom instruction macros
+ *
+ */
+
+#define ALT_CI_THRESHOLD_CI_0(A,B) __builtin_custom_inii(ALT_CI_THRESHOLD_CI_0_N,(A),(B))
+#define ALT_CI_THRESHOLD_CI_0_N 0x0
+
+
+/*
  * Define for each module class mastered by the CPU
  *
  */
@@ -151,6 +160,7 @@
 #define __CAM_DMA
 #define __I2C_MASTER
 #define __LCD_DMA
+#define __THRESHOLD_CI
 #define __VGA_DMA
 
 
@@ -405,7 +415,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1702367291
+#define SYSID_TIMESTAMP 1702475875
 #define SYSID_TYPE "altera_avalon_sysid_qsys"
 
 

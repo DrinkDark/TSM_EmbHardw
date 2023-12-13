@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "io.h"
+#include "system.h"
 
 const char gx_array[3][3] = {{-1,0,1},
                              {-2,0,2},
@@ -207,7 +208,7 @@ void sobel(unsigned char *source, short threshold) {
 
          short sum = abs(gx) + abs(gy);
 
-         sobel_result[arrayIndex] = (sum > threshold) ? 0xFF : 0;
+         sobel_result[arrayIndex] = ALT_CI_THRESHOLD_CI_0(sum, threshold);
       }
    }
 }

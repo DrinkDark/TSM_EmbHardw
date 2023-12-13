@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>12 déc. 2023 08:53:44</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1702367624605</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>13 déc. 2023 15:18:10</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1702477090598</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\adrie\OneDrive\Documents\HES\Master\TSM_EmbHardw\Labo\mse_demo\software\sobel_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>C:\Users\adrie\OneDrive\Documents\HES\Master\TSM_EmbHardw\Labo\mse_demo\quartus_project\base_system.sopcinfo</SopcDesignFile>
