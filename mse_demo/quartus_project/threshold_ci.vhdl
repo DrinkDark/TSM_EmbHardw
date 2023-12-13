@@ -12,7 +12,6 @@ entity sobel_threshold_ci is
 end sobel_threshold_ci;
 
 architecture behavioral of sobel_threshold_ci is
-
 begin
   process(sum)
   begin

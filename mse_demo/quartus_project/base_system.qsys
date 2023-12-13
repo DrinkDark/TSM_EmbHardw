@@ -81,6 +81,14 @@
          type = "int";
       }
    }
+   element grayscale_ci_0
+   {
+      datum _sortIndex
+      {
+         value = "14";
+         type = "int";
+      }
+   }
    element i2c_ctrl
    {
       datum _sortIndex
@@ -455,6 +463,7 @@
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
+ <module name="grayscale_ci_0" kind="grayscale_ci" version="1.0" enabled="1" />
  <module name="i2c_ctrl" kind="i2c_master" version="1.0" enabled="1" />
  <module
    name="jtag_uart"
@@ -493,7 +502,7 @@
   <parameter name="cpuArchRev" value="1" />
   <parameter name="cpuID" value="0" />
   <parameter name="cpuReset" value="false" />
-  <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="threshold_ci_0" baseAddress="0" addressSpan="1" clockCycleType="COMBINATORIAL" /></info>]]></parameter>
+  <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="threshold_ci_0" baseAddress="0" addressSpan="1" clockCycleType="COMBINATORIAL" /><slave name="grayscale_ci_0" baseAddress="1" addressSpan="1" clockCycleType="COMBINATORIAL" /></info>]]></parameter>
   <parameter name="customInstSlavesSystemInfo_nios_a" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_b" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_c" value="&lt;info/&gt;" />
@@ -969,6 +978,15 @@
   <parameter name="CIName" value="threshold_ci_0" />
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0" />
+ </connection>
+ <connection
+   kind="nios_custom_instruction"
+   version="18.1"
+   start="nios2_gen2_0.custom_instruction_master"
+   end="grayscale_ci_0.nios_custom_instruction_slave">
+  <parameter name="CIName" value="grayscale_ci_0" />
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="1" />
  </connection>
  <connection
    kind="reset"
