@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="base_system" kind="base_system" version="1.0" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2023.12.13.18:07:40 -->
+ <!-- 2023.12.17.14:45:42 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1702487258</value>
+  <value>1702820741</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -5119,132 +5119,6 @@ parameters are a RESULT of the module parameters. -->
    </port>
   </interface>
  </module>
- <module
-   name="grayscale_ci_0"
-   kind="grayscale_ci"
-   version="1.0"
-   path="grayscale_ci_0">
-  <!-- Describes a single module. Module parameters are
-the requested settings for a module instance. -->
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <interface
-     name="nios_custom_instruction_slave"
-     kind="nios_custom_instruction_slave"
-     version="18.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="CIName">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>true</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="NPort">
-    <type>int</type>
-    <value>0</value>
-    <derived>true</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="clockCycle">
-    <type>int</type>
-    <value>0</value>
-    <derived>false</derived>
-    <enabled>false</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="clockCycleType">
-    <type>com.altera.sopcmodel.custominstruction.CustomInstruction$ClockCycleType</type>
-    <value>COMBINATORIAL</value>
-    <derived>true</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="opcodeExtension">
-    <type>int</type>
-    <value>0</value>
-    <derived>true</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="opcodeExtensionLocked">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="opcodeExtensionLockedValue">
-    <type>int</type>
-    <value>0</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>false</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="operands">
-    <type>int</type>
-    <value>2</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>nios_custom_instruction</type>
-   <isStart>false</isStart>
-   <port>
-    <name>a</name>
-    <direction>Input</direction>
-    <width>32</width>
-    <role>dataa</role>
-   </port>
-   <port>
-    <name>result</name>
-    <direction>Output</direction>
-    <width>32</width>
-    <role>result</role>
-   </port>
-  </interface>
- </module>
  <module name="i2c_ctrl" kind="i2c_master" version="1.0" path="i2c_ctrl">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
@@ -7630,7 +7504,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.HARDWARE_DIVIDE_PRESENT</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.HARDWARE_MULTIPLY_PRESENT</name>
@@ -7638,7 +7512,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.HARDWARE_MULX_PRESENT</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.HAS_DEBUG_CORE</name>
@@ -7646,6 +7520,10 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.HAS_DEBUG_STUB</name>
+   <value></value>
+  </assignment>
+  <assignment>
+   <name>embeddedsw.CMacro.HAS_DIVISION_ERROR_EXCEPTION</name>
    <value></value>
   </assignment>
   <assignment>
@@ -7745,11 +7623,19 @@ the requested settings for a module instance. -->
    <value>0x00000020</value>
   </assignment>
   <assignment>
+   <name>embeddedsw.dts.params.altr,has-div</name>
+   <value>1</value>
+  </assignment>
+  <assignment>
    <name>embeddedsw.dts.params.altr,has-initda</name>
    <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,has-mul</name>
+   <value>1</value>
+  </assignment>
+  <assignment>
+   <name>embeddedsw.dts.params.altr,has-mulx</name>
    <value>1</value>
   </assignment>
   <assignment>
@@ -8274,7 +8160,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="multiplierType">
    <type>java.lang.String</type>
-   <value>mul_fast32</value>
+   <value>mul_fast64</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -8282,7 +8168,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="mul_shift_choice">
    <type>int</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -8292,15 +8178,15 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>2</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
   <parameter name="mul_64_impl">
    <type>int</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -8308,13 +8194,13 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
   <parameter name="dividerType">
    <type>java.lang.String</type>
-   <value>no_div</value>
+   <value>srt2</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -9331,7 +9217,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="customInstSlavesSystemInfo">
    <type>java.lang.String</type>
-   <value><![CDATA[<info><slave name="threshold_ci_0" baseAddress="0" addressSpan="1" clockCycleType="COMBINATORIAL" /><slave name="grayscale_ci_0" baseAddress="1" addressSpan="1" clockCycleType="COMBINATORIAL" /></info>]]></value>
+   <value><![CDATA[<info><slave name="threshold_ci_0" baseAddress="0" addressSpan="1" clockCycleType="COMBINATORIAL" /></info>]]></value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -11013,14 +10899,6 @@ parameters are a RESULT of the module parameters. -->
     <name>threshold_ci_0.nios_custom_instruction_slave</name>
     <opcodeNumber>0</opcodeNumber>
     <opcodeMnemonic>threshold_ci_0</opcodeMnemonic>
-   </customInstruction>
-   <customInstruction>
-    <isBridge>false</isBridge>
-    <moduleName>grayscale_ci_0</moduleName>
-    <slaveName>nios_custom_instruction_slave</slaveName>
-    <name>grayscale_ci_0.nios_custom_instruction_slave</name>
-    <opcodeNumber>1</opcodeNumber>
-    <opcodeMnemonic>grayscale_ci_0</opcodeMnemonic>
    </customInstruction>
   </interface>
  </module>
@@ -12728,7 +12606,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1702487258</value>
+   <value>1702820741</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -12748,7 +12626,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1702487258</value>
+   <value>1702820741</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -12764,7 +12642,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1702487258</value>
+   <value>1702820741</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -15892,73 +15770,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>nios_custom_instruction_slave</endConnectionPoint>
  </connection>
  <connection
-   name="nios2_gen2_0.custom_instruction_master/grayscale_ci_0.nios_custom_instruction_slave"
-   kind="nios_custom_instruction"
-   version="18.1"
-   start="nios2_gen2_0.custom_instruction_master"
-   end="grayscale_ci_0.nios_custom_instruction_slave">
-  <parameter name="CIName">
-   <type>java.lang.String</type>
-   <value>grayscale_ci_0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="CINameUpgrade">
-   <type>java.lang.String</type>
-   <value></value>
-   <derived>true</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="arbitrationPriority">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>false</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="baseAddress">
-   <type>long</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="opcodeExtensionUpgrade">
-   <type>int</type>
-   <value>-1</value>
-   <derived>true</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>nios2_gen2_0</startModule>
-  <startConnectionPoint>custom_instruction_master</startConnectionPoint>
-  <endModule>grayscale_ci_0</endModule>
-  <endConnectionPoint>nios_custom_instruction_slave</endConnectionPoint>
- </connection>
- <connection
    name="clk_0.clk_reset/altpll_0.inclk_interface_reset"
    kind="reset"
    version="18.1"
@@ -16728,22 +16539,6 @@ parameters are a RESULT of the module parameters. -->
  </plugin>
  <plugin>
   <instanceCount>1</instanceCount>
-  <name>grayscale_ci</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IModule</subtype>
-  <displayName>grayscale_ci</displayName>
-  <version>1.0</version>
- </plugin>
- <plugin>
-  <instanceCount>2</instanceCount>
-  <name>nios_custom_instruction_slave</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
-  <displayName>Custom Instruction Slave</displayName>
-  <version>18.1</version>
- </plugin>
- <plugin>
-  <instanceCount>1</instanceCount>
   <name>i2c_master</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
@@ -16832,6 +16627,14 @@ parameters are a RESULT of the module parameters. -->
  </plugin>
  <plugin>
   <instanceCount>1</instanceCount>
+  <name>nios_custom_instruction_slave</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Custom Instruction Slave</displayName>
+  <version>18.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>1</instanceCount>
   <name>vga_dma</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
@@ -16863,7 +16666,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <plugin>
-  <instanceCount>2</instanceCount>
+  <instanceCount>1</instanceCount>
   <name>nios_custom_instruction</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>

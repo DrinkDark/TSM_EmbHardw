@@ -30,6 +30,10 @@ int main()
   alt_u32 start_sobel_threshold;
   alt_u32 stop_sobel_threshold;
 
+  alt_u32 meanCycles = 0;
+  float meanFPS = 0;
+  int nbrMean = 0;
+
   init_LCD();
   init_camera();
   vga_set_swap(VGA_QuarterScreen|VGA_Grayscale);
@@ -142,7 +146,13 @@ int main()
 		      	  		  vga_set_pointer(grayscale);
 		      	  	   }
 
-		      	  	   printf("Total : %d cycles/pixel\n\n", ((stop_grayscale - start_grayscale)+(stop_sobel_x - start_sobel_x)+(stop_sobel_y - start_sobel_y)+(stop_sobel_threshold - start_sobel_threshold)) / 196608);
+		      	  	   printf("Total : %d cycles/pixel\n", ((stop_grayscale - start_grayscale)+(stop_sobel_x - start_sobel_x)+(stop_sobel_y - start_sobel_y)+(stop_sobel_threshold - start_sobel_threshold)) / 196608);
+		      	  	   printf("FPS : %.*f \n",2 , (float)ALT_CPU_FREQ / ((stop_grayscale - start_grayscale)+(stop_sobel_x - start_sobel_x)+(stop_sobel_y - start_sobel_y)+(stop_sobel_threshold - start_sobel_threshold)));
+		      	  	   meanCycles += (((stop_grayscale - start_grayscale)+(stop_sobel_x - start_sobel_x)+(stop_sobel_y - start_sobel_y)+(stop_sobel_threshold - start_sobel_threshold)) / 196608);
+		      	  	   meanFPS += (float)ALT_CPU_FREQ / ((stop_grayscale - start_grayscale)+(stop_sobel_x - start_sobel_x)+(stop_sobel_y - start_sobel_y)+(stop_sobel_threshold - start_sobel_threshold));
+		      	  	   nbrMean++;
+		      	  	   printf("Mean : %d cycles/pixel, %.*f FPS -> for %d samples\n\n", (meanCycles / nbrMean), 2 , (meanFPS / nbrMean), nbrMean);
+
 		      	  	   break;
 		      }
 		  }

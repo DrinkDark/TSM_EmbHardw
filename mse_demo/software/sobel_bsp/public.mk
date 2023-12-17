@@ -118,16 +118,16 @@ CPU_NAME = nios2_gen2_0
 ELF_PATCH_FLAG  += --cpu_name $(CPU_NAME)
 
 # Hardware Divider present. 
-# setting HARDWARE_DIVIDE is false
-ALT_CFLAGS += -mno-hw-div
+# setting HARDWARE_DIVIDE is true
+ALT_CFLAGS += -mhw-div
 
 # Hardware Multiplier present. 
 # setting HARDWARE_MULTIPLY is true
 ALT_CFLAGS += -mhw-mul
 
 # Hardware Mulx present. 
-# setting HARDWARE_MULX is false
-ALT_CFLAGS += -mno-hw-mulx
+# setting HARDWARE_MULX is true
+ALT_CFLAGS += -mhw-mulx
 
 # Debug Core present. 
 # setting HAS_DEBUG_CORE is true
@@ -157,9 +157,9 @@ SOPC_SYSID_FLAG += --sidp=0x10010d8
 ELF_PATCH_FLAG  += --sidp 0x10010d8
 
 # The SOPC Timestamp 
-# setting SOPC_TIMESTAMP is 1702487258
-SOPC_SYSID_FLAG += --timestamp=1702487258
-ELF_PATCH_FLAG  += --timestamp 1702487258
+# setting SOPC_TIMESTAMP is 1702820741
+SOPC_SYSID_FLAG += --timestamp=1702820741
+ELF_PATCH_FLAG  += --timestamp 1702820741
 
 # Enable JTAG UART driver to recover when host is inactive causing buffer to 
 # full without returning error. Printf will not fail with this recovery. none 
