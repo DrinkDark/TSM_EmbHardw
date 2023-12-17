@@ -178,7 +178,7 @@ void sobel_threshold(short threshold) {
 	}
 }
 
-/*void sobel(unsigned char *source, short threshold) {
+void sobel(unsigned char *source, short threshold) {
     int x, y;
 
     for (y = 1; y < (sobel_height - 1); y++) {
@@ -189,6 +189,7 @@ void sobel_threshold(short threshold) {
         memcpy(l1, source + (y - 1) * sobel_width, sobel_width);
         memcpy(l2, source + y * sobel_width, sobel_width);
         memcpy(l3, source + (y + 1) * sobel_width, sobel_width);
+
 
         for (x = 1; x < (sobel_width - 1); x++) {
             int arrayIndex = y * sobel_width + x;
@@ -218,65 +219,7 @@ void sobel_threshold(short threshold) {
             sobel_result[arrayIndex] = ALT_CI_THRESHOLD_CI_0(sum, threshold);
         }
     }
-}*/
-
-void sobel(unsigned char *source, short threshold) {
-    int x, y;
-
-    for (y = 1; y < (sobel_height - 1); y++) {
-        unsigned char l11;
-        unsigned char l12;
-        unsigned char l13;
-        unsigned char l21;
-        unsigned char l22;
-        unsigned char l23;
-        unsigned char l31;
-        unsigned char l32;
-        unsigned char l33;
-
-        memcpy(l11, source + (y - 1), sizeof(l11));
-        memcpy(l12, source + (y - 1) + sizeof(l11), sizeof(l11));
-        memcpy(l13, source + (y - 1) + 2 * sizeof(l11), sizeof(l11));
-
-        memcpy(l21, source + y, sizeof(l11));
-        memcpy(l22, source + y + sizeof(l11), sizeof(l11));
-        memcpy(l23, source + y + 2 * sizeof(l11), sizeof(l11));
-
-        memcpy(l31, source + (y + 1), sizeof(l11));
-        memcpy(l32, source + (y + 1) + sizeof(l11), sizeof(l11));
-        memcpy(l33, source + (y + 1) + 2 * sizeof(l11), sizeof(l11));
-
-
-        for (x = 1; x < (sobel_width - 1); x++) {
-            int arrayIndex = y * sobel_width + x;
-
-            short gx = 	l11 * gx_array[0][0] +
-            			l12 * gx_array[0][1] +
-						l13 * gx_array[0][2] +
-						l21 * gx_array[1][0] +
-						l22 * gx_array[1][1] +
-						l23 * gx_array[1][2] +
-						l31 * gx_array[2][0] +
-						l32 * gx_array[2][1] +
-						l33 * gx_array[2][2];
-
-            short gy = 	l11 * gy_array[0][0] +
-            			l12 * gy_array[0][1] +
-						l13 * gy_array[0][2] +
-						l21 * gy_array[1][0] +
-						l22 * gy_array[1][1] +
-						l23 * gy_array[1][2] +
-						l31 * gy_array[2][0] +
-						l32 * gy_array[2][1] +
-						l33 * gy_array[2][2];
-
-            short sum = abs(gx) + abs(gy);
-
-            sobel_result[arrayIndex] = ALT_CI_THRESHOLD_CI_0(sum, threshold);
-        }
-    }
 }
-
 
 unsigned short *GetSobel_rgb() {
 	return sobel_rgb565;
