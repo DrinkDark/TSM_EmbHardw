@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <io.h>
 #include <system.h>
+#include <stdlib.h>
+#include <string.h>
 
 unsigned char *grayscale_array;
 int grayscale_width = 0;
@@ -28,15 +30,18 @@ void conv_grayscale(void *picture,
 			//gray = ALT_CI_THRESHOLD_CI_0(pixels[y*width+x], 0);
 			rgb = pixels[y*width+x];
 
-			gray = ((((rgb>>11)&0x1F)<<3)*27 + 	// red part 16
-					(((rgb>>5)&0x3F)<<2)*92 + 	// green part 56
-					(((rgb>>0)&0x1F)<<3)*9)		// blue part 5
+			gray = ((((rgb>>11)&0x1F)<<3)*27 +
+					(((rgb>>5)&0x3F)<<2)*92 +
+					(((rgb>>0)&0x1F)<<3)*9)
 					>> 7;
 
 			IOWR_8DIRECT(grayscale_array,y*width+x,gray);
 		}
 	}
 }
+
+
+
 
 int get_grayscale_width() {
 	return grayscale_width;

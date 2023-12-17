@@ -103,7 +103,8 @@ int main()
 		      	  		  vga_set_pointer(image);
 		      	  	   }
 		      	  	   break;
-		      default: start_grayscale = alt_timestamp();
+		      default: alt_timestamp_start();
+		    	  	   start_grayscale = alt_timestamp();
 		    	  	   conv_grayscale((void *)image,
 	                                  cam_get_xsize()>>1,
 	                                  cam_get_ysize());
