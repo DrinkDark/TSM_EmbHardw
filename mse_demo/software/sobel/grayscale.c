@@ -27,7 +27,6 @@ void conv_grayscale(void *picture,
 	grayscale_array = (unsigned char *) malloc(width*height);
 	for (y = 0 ; y < height ; y++) {
 		for (x = 0 ; x < width ; x++) {
-			//gray = ALT_CI_THRESHOLD_CI_0(pixels[y*width+x], 0);
 			rgb = pixels[y*width+x];
 
 			gray = ((((rgb>>11)&0x1F)<<3)*27 +
